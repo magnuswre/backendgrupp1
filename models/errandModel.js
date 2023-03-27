@@ -24,10 +24,40 @@ exports.getErrands = (req, res) => {
 }
 
 
+// GET ERRAND BY ID
 
-// PUT 
+exports.getOneErrand = (req, res) => {
+       id  = req.params.id 
+    Errand.findById(id)
+    .then(data => res.status(200).json(data))
+    .catch(() => res.status(500).json({ message: "Something went wrong getting specific the errand" })) 
+}
 
-// DELETE
 
 
+
+// // PUT
+
+// exports.changeErrand = (req, res) => {
+//     const { email, subject, message, status } = req.body
+//     if(!email || !subject || !message){
+//         return res.status(400).json({
+//              message: "all fields are required"
+//         })
+//      }
+//     Errand.findByIdAndUpdate({ email, subject, message, status })
+//     .then(data => res.status(201).json(data))
+//     .catch(() => res.status(500).json({ message: "Something went wrong" })) 
+//    }
+
+
+
+
+// // DELETE
+
+// exports.deleteErrand = (req, res) => {
+//     Errand.find()
+//     .then(data => res.status(200).json(data))
+//     .catch(() => res.status(500).json({ message: "Something went wrong getting all the errands" })) 
+// }
 

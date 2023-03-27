@@ -4,6 +4,7 @@ const errandModel = require('../models/errandModel')
 //Controllers
 router.post('/', errandModel.postErrand)
 router.get('/', errandModel.getErrands)
+router.get('/:id', errandModel.getOneErrand)
 
 
 module.exports = router;
