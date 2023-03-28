@@ -30,7 +30,7 @@ exports.getErrands = (req, res) => {
 // GET ERRAND BY ID
 
 exports.getOneErrand = (req, res) => {
-       id  = req.params.id 
+    id  = req.params.id 
     Errand.findById(id)
     .then(data => res.status(200).json(data))
     .catch(() => res.status(500).json({ message: "Something went wrong getting specific the errand" })) 
