@@ -20,6 +20,7 @@ exports.postErrand = (req, res) => {
 exports.getErrands = (req, res) => {
     Errand.find()
     .populate('comment')
+    .populate('status')
     .exec()
     .then(data => res.status(200).json(data))
     .catch(() => res.status(500).json({ message: "Something went wrong getting all the errands" })) 
@@ -32,6 +33,7 @@ exports.getOneErrand = (req, res) => {
        id  = req.params.id 
     Errand.findById(id)
     .populate('comment')
+    .populate('status')
     .exec()
     .then(data => res.status(200).json(data))
     .catch(() => res.status(500).json({ message: "Something went wrong getting specific the errand" })) 
