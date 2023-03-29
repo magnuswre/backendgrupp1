@@ -9,6 +9,11 @@ exports.postErrand = (req, res) => {
              message: "all fields are required"
         })
      }
+     if(status < 1 || status > 3 ) {
+        return res.status(400).json({
+            message: "Unavailable status!"
+       })
+     }
     Errand.create({ email, subject, message, status, comment })
     .then(data => res.status(201).json(data))
     .catch(() => res.status(500).json({ message: "Something went wrong" })) 
@@ -48,6 +53,13 @@ exports.changeErrand = (req, res) => {
     const { email, subject, message, status, comment } = req.body
 
     id = req.params.id
+
+    if(status < 1 || status > 3 ) {
+        console.log('problem')
+        return res.status(400).json({
+            message: "Unavailable status!"
+       })
+     }
     
     Errand.findByIdAndUpdate(id, { email, subject, message, status, comment }, { new: true })
     .populate('comment')
