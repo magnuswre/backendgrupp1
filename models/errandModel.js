@@ -1,7 +1,6 @@
 const { populate } = require('../schemas/errandSchema');
 const Errand = require('../schemas/errandSchema');
 
-
 // POST
 exports.postErrand = (req, res) => {
     const { email, subject, message, status, comment } = req.body
