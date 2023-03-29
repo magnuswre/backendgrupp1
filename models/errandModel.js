@@ -31,6 +31,8 @@ exports.getErrands = (req, res) => {
 exports.getOneErrand = (req, res) => {
        id  = req.params.id 
     Errand.findById(id)
+    .populate('comment')
+    .exec()
     .then(data => res.status(200).json(data))
     .catch(() => res.status(500).json({ message: "Something went wrong getting specific the errand" })) 
 }
